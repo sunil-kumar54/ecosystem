@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trash2Cash</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #0c253a;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    /* HEADER */
+    .header {
+      background: #142646;
+      display: flex;
+      align-items: center;
+      padding: 18px 60px;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-img img {
+      height: 38px;
+      width: 38px;
+      border-radius: 8px;
+    }
+    .brand-text {
+      font-size: 22px;
+      font-weight: 600;
+      color: #e1f2e7;
+      letter-spacing: 1px;
+    }
+    .nav {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+    .nav a {
+      text-decoration: none;
+      color: #c0e1c8;
+      font-size: 20px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav a:hover {
+      color: #95df93;
+    }
+    .sign-btn {
+      background: none;
+      border: 1.5px solid #c0e1c8;
+      color: #c0e1c8;
+      border-radius: 8px;
+      padding: 7px 23px;
+      font-size: 16px;
+      font-weight: 500;
+      margin-left: 30px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .sign-btn:hover {
+      background: #29c97c;
+      color: #fff;
+    }
+
+    /* HERO SECTION */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      background: url("{{ url_for('static', filename='images/background.jpg') }}") no-repeat center center;
+      background-size: cover;
+      position: relative;
+      z-index: 1;
+      animation: zoomInOut 15s ease-in-out infinite;
+    }
+    @keyframes zoomInOut {
+      0% { background-size: 100%; }
+      50% { background-size: 115%; }
+      100% { background-size: 100%; }
+    }
+
+    /* ===== Modal Popup Styling ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #18304f;
+      padding: 30px 40px;
+      border-radius: 12px;
+      text-align: center;
+      color: #e1f2e7;
+      width: 350px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease;
+    }
+    .modal h2 {
+      margin-top: 0;
+      color: #89d269;
+    }
+    .modal p {
+      margin: 12px 0 25px;
+      font-size: 16px;
+      color: #d7e7d1;
+    }
+    .modal button {
+        background: #29c97c;
+      border: none;
+      padding: 10px 22px;
+      margin: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .modal button:hover {
+      background: #1ea96b;
+    }
+    .close-btn {
+      background: transparent;
+      border: 1px solid #c0e1c8;
+      color: #c0e1c8;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(12,37,58,0.85);
+      z-index: 2;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      margin-top: 70px;
+    }
+    .hero-logo img {
+      height: 80px;
+      width: 80px;
+      border-radius: 8px;
+    }
+    .hero-text {
+      font-size: 51px;
+      font-weight: 700;
+      color: #e1f2e7;
+      margin-bottom: 17px;
+    }
+    .hero-sub {
+      font-size: 28px;
+      color: #89d269;
+      font-weight: 600;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      letter-spacing: 0.8px;
+    }
+
+    /* FEATURES SECTION */
+    .features {
+      background: #10233d;
+      padding: 80px 60px;
+      text-align: center;
+    }
+    .features h2 {
+      font-size: 38px;
+      color: #8ce38e;
+      margin-bottom: 40px;
+    }
+    .feature-boxes {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .feature {
+      background: #142646;
+      border-radius: 15px;
+      padding: 30px;
+      width: 280px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .feature:hover {
+      transform: translateY(-8px);
+    }
+    .feature h3 {
+      color: #aef6b6;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .feature p {
+      color: #c0e1c8;
+      font-size: 16px;
+    }
+
+    /* NEW CONTACT SECTION (Updated) */
+    .contact {
+      background: #f6f8fa;
+      padding: 80px 60px;
+      color: #202342;
+    }
+    .contact-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+    .contact-left {
+      width: 350px;
+    }
+    .contact-left .subtitle {
+      color: #69bd43;
+      font-size: 14px;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .contact-left h2 {
+      font-size: 2em;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 22px;
+      gap: 14px;
+    }
+    .info-item i {
+      color: #69bd43;
+      font-size: 22px;
+      min-width: 22px;
+      margin-top: 2px;
+    }
+    .info-text {
+      font-size: 15px;
+      line-height: 1.4;
+    }
+    .contact-right {
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(30,106,221,.04);
+      border-radius: 12px;
+      padding: 36px 30px;
+      min-width: 380px;
+      width: 400px;
+    }
+    .contact-right input, .contact-right textarea {
+      width: 100%;
+      border: 1px solid #eee;
+      background: #f5f5f5;
+      padding: 10px 14px;
+      font-size: 15px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+    .contact-right textarea {
+      height: 90px;
+      resize: none;
+    }
+    .contact-right .form-row {
+      display: flex;
+      gap: 18px;
+    }
+    .contact-right button {
+      background: #f5c645;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 28px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 4px 18px 0 rgba(245, 198, 69, 0.19);
+      transition: background 0.2s;
+    }
+    .contact-right button:hover {
+      background: #e0b23d;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #142646;
+      color: #c0e1c8;
+      text-align: center;
+      padding: 20px;
+      font-size: 15px;
+    }
+
+    @media (max-width: 900px) {
+      .contact-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .contact-left, .contact-right {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-box">
+      <span class="logo-img">
+        <img src="static/images/logo.png" alt="Trash2Cash">
+      </span>
+      <span class="brand-text">Trash2Cash</span>
+    </div>
+    <nav class="nav">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('about') }}">About Us</a>
+      <a href="{{ url_for('why') }}">Why Us</a>
+      <button class="sign-btn">Sign in / Signup</button>
+    </nav>
+
+  </div>
+
+  <!-- Hero Section -->
+  <div class="main-content">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="static/images/logo.png" alt="Trash2Cash">
+      </div>
+      <div class="hero-text">Trash2Cash</div>
+      <div class="hero-sub">Your Scrap, Your Cash</div>
+    </div>
+  </div>
+
+  <!-- ===== Popup Modal ===== -->
+  <div class="modal" id="authModal">
+    <div class="modal-content">
+      <h2>Welcome!</h2>
+      <p>Please sign in if you already have an account,<br>or sign up to create a new one.</p>
+      <div>
+        <button onclick="window.location.href='{{ url_for('login') }}'">Sign In</button>
+        <button onclick="window.location.href='{{ url_for('signup') }}'">Sign Up</button>
+
+      </div>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const modal = document.getElementById('authModal');
+    const openBtn = document.querySelector('.sign-btn');
+
+    openBtn.addEventListener('click', () => {
+      modal.style.display = 'flex';
+    });
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    // Close modal when clicking outside the popup
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+
+
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <h2>Our Features</h2>
+    <div class="feature-boxes">
+      <div class="feature">
+        <h3>Easy Waste Upload</h3>
+        <p>Upload your dry waste details quickly and get instant quotes from nearby recyclers.</p>
+      </div>
+      <div class="feature">
+        <h3>Secure Payments</h3>
+        <p>Get paid safely and instantly once your waste is picked up and verified.</p>
+      </div>
+      <div class="feature">
+        <h3>Recycling Made Simple</h3>
+        <p>Track your recycling journey and contribute to a cleaner environment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPDATED CONTACT SECTION -->
+  <section id="contact" class="contact">
+    <div class="contact-container">
+      <div class="contact-left">
+        <p class="subtitle">Get In Touch With Us</p>
+        <h2>Contact with<br>the team</h2>
+        <div class="info-item">
+          <i class="fa fa-location-dot"></i>
+          <div class="info-text">
+            <strong>Material Recovery Facility</strong><br>
+            #94, Hosur Road, Sector 2 Ashirwarya Crystal Layout, Singasandra<br>
+            Patna - 801506
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fa fa-phone"></i>
+          <div class="info-text">
+            Phone no<br>
+            +91 167-678-7678
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fa fa-envelope"></i>
+          <div class="info-text">
+            Email<br>
+            admin@trashtracoach.co.in<br>
+            info.trashtracoach@gmail.com
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-right">
+        <form>
+          <div class="form-row">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+          </div>
+          <input type="text" placeholder="Phone Number*" required>
+          <input type="text" placeholder="Subject">
+          <textarea placeholder="Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    © 2025 Trash to Cash | All Rights Reserved
+  </footer>
+
+</body>
+</html>

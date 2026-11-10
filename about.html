@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sustainability Webpage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+        section {
+            padding: 60px 0;
+        }
+        /* Section 1: About Us */
+        .about-section {
+             background: url('bacg.jpg') center center/cover no-repeat;
+            text-align: center;
+
+        }
+        .about-section h1 {
+           
+            color: rgb(63, 36, 36);
+            font-size: 60px;
+            text-align: left;
+            margin-left: 10%;
+            margin-top: 80px;
+        }
+        .header-image {
+           
+            width: 100%;
+            height: 140px;
+            position: relative;
+        }
+        .headline {
+            position: absolute;
+            top: 40px;
+            left: 25%;
+            right: 25%;
+            background: #fff;
+            border-radius: 15px;
+            padding: 12px 25px;
+            font-size: 28px;
+            color: #ff6a1a;
+            font-family: Arial;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 60px;
+        }
+        .card {
+            width: 220px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 26px 0 20px 0;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-6px) scale(1.04);
+        }
+        .card-icon {
+            font-size: 39px;
+            margin-bottom: 16px;
+            color: #269a42;
+        }
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2b3643;
+            margin-top: 12px;
+        }
+
+        /* Section 2: Mission & Vision */
+        .mission-section {
+            background: linear-gradient(90deg, #142646 60%, #7e7b6e 100%);
+            color: #fff;
+        }
+        .mission-container {
+            display: flex;
+            align-items: flex-start;
+            padding: 50px 80px;
+            justify-content: space-between;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .mission-content {
+            width: 55%;
+        }
+        .mission-content h1, .mission-content h2 {
+            font-weight: bold;
+        }
+        .mission-content h1 {
+            font-size: 2.8rem;
+        }
+        .mission-content h2 {
+            font-size: 2.1rem;
+            margin-top: 2.5em;
+        }
+        .mission-content p {
+            font-size: 1.1rem;
+            width: 90%;
+            line-height: 1.7;
+        }
+        .img-box {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 22px rgba(0,0,0,0.13);
+            padding: 12px;
+        }
+        .img-box img {
+            border-radius: 8px;
+            width: 360px;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        /* Section 3: Join Us */
+        .join-section {
+            background-color: #d1eef9;
+            color: rgb(44, 36, 115);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            text-align: center;
+        }
+        .join-section .main-text {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+        .join-section .icons {
+            font-size: 68px;
+            margin: 20px 0;
+        }
+        .join-section .main-text2 {
+            font-size: 4em;
+            line-height: 1.5;
+        }
+
+        /* Section 4: How We Work */
+        .work-section {
+            background: #f6f6f6 url('bacg.jpg') no-repeat center center/cover;
+        }
+        .work-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.7);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+            border-radius: 18px;
+            padding: 30px 20px;
+        }
+        .work-section h1 {
+            text-align: center;
+            font-size: 40px;
+            color: black;
+        }
+        .title {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            font-style: italic;
+            color: #252525;
+            margin-bottom: 40px;
+        }
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .step-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+            width: 250px;
+            padding: 24px 18px 14px 18px;
+            text-align: center;
+        }
+        .step-card img {
+            height: 70px;
+            margin-bottom: 16px;
+        }
+        .step-title {
+            font-weight: 500;
+            font-size: 1em;
+        }
+
+        /* Section 5: Recycling Process */
+        .recycle-section {
+            background: #f5f5f5 url('bacg.jpg') no-repeat center center/cover;
+            padding-bottom: 80px;
+        }
+        .recycle-title {
+            text-align: center;
+            font-size: 2em;
+            color: #1565c0;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 40px;
+        }
+        .recycle-container {
+            display: flex;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 30px;
+        }
+        .process-left {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+        }
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+        .icon {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #00843D;
+            color: #fff;
+            font-size: 20px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+        .icon.wash { background: #388326; }
+        .icon.bale { background: #1976d2; }
+        .icon.pellet { background: #a1a700; }
+        .text-content h3 {
+            margin: 0 0 6px 0;
+            color: #003366;
+        }
+        .text-content p {
+            margin: 0;
+            color: #333;
+            font-size: 0.99em;
+        }
+        .process-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .process-right img {
+            max-width: 320px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Section 1: About Us -->
+    <section class="about-section">
+        <h1>About us.....</h1>
+        <div class="header-image">
+            <div class="headline">
+                We are connecting three <span style="color:#eb5627;">Important terms</span> together
+            </div>
+        </div>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="card-title">Waste<br>Management</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-recycle"></i></div>
+                <div class="card-title">Circular<br>Economy</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                <div class="card-title">EPR<br>Services</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Mission & Vision -->
+    <section class="mission-section">
+        <div class="mission-container">
+            <div class="mission-content">
+                <h1>Mission</h1>
+                <p>Empower change by turning waste into wealth. Our mission is to transform every piece of discarded material into valuable resources, creating a sustainable cycle that not only cleans the environment but also enriches lives. Join us in the journey from trash to cash, forging a greener and wealthier future together.</p>
+                <h2>Vision</h2>
+                <p>In our vision, every piece of waste becomes an opportunity for positive change. We aim to redefine the waste landscape, unleashing a world where recycling not only sustains the environment but also creates economic value, turning trash into cash and paving the way for a brighter, sustainable future.</p>
+            </div>
+            <div class="img-box">
+                <img src="1000186996.jpg" alt="Tree in glass globe"/>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Join Us -->
+    <section class="join-section">
+        <div class="main-text">Join us in making a difference</div>
+        <div class="icons">♻ 🗑</div>
+        <div class="main-text2">Become a part of our community<br>and contribute a sustainable<br>future</div>
+    </section>
+
+    <!-- Section 4: How We Work -->
+    <section class="work-section">
+        <h1>How We Work</h1>
+        <div class="work-container">
+            <div class="title">Give Your Dry Waste in <br>3 easy steps</div>
+            <div class="steps">
+                <div class="step-card">
+                    <img src="Dust.jpg" alt="Segregate Waste">
+                    <div class="step-title">Segregate your dry waste properly.</div>
+                </div>
+                <div class="step-card">
+                    <img src="Cal.jpg" alt="Calendar Icon">
+                    <div class="step-title">Mark the time & get ready to give the dry waste.</div>
+                </div>
+                <div class="step-card">
+                    <img src="Truck.jpg" alt="Weighing Icon">
+                    <div class="step-title">Give your dustbin to our helper for weighing.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Recycling Process -->
+    <section class="recycle-section">
+        <div class="recycle-title">RECYCLING PROCESS</div>
+        <div class="recycle-container">
+            <div class="process-left">
+                <div class="process-step">
+                    <div class="icon">&#128230;</div>
+                    <div class="text-content">
+                        <h3>Segregation / Sorting</h3>
+                        <p>Segregation or sorting involves separating waste into categories for efficient recycling, disposal, or reuse.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="icon wash">&#10004;</div>
+                    <div class="text-content">
+                        <h3>Washing</h3>
+                        <p>Washing removes contaminants from recyclables, ensuring clean materials for processing into new products or reuse.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="icon bale">&#128230;</div>
+                    <div class="text-content">
+                        <h3>Baling</h3>
+                        <p>Baling compresses recyclable materials like plastics, paper, or metals into compact blocks for easier transport and storage.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="icon pellet">&#11044;</div>
+                    <div class="text-content">
+                        <h3>Pelletization</h3>
+                        <p>Pelletization converts shredded plastic waste into uniform pellets through melting and extrusion, enabling easier recycling and reuse.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="process-right">
+                <img src="1000187005.jpg" alt="Recycling Process Pellets">
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
